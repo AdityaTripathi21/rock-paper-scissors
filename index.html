@@ -1,114 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Landing</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Page Title</title>
   </head>
   <body>
-    <div class="container">
-      <nav class="navbar">
-        <div class="header">
-          <img
-            src="pexels-thirdman-8489742.jpg"
-            alt="Man holding indian flag"
-            class="header-img"
-          />
-        </div>
-        <div class="links">
-          <ul>
-            <li><a href="#">header link one</a></li>
-          </ul>
-          <ul>
-            <li><a href="#">header link two</a></li>
-          </ul>
-          <ul>
-            <li><a href="#">header link three</a></li>
-          </ul>
-        </div>
-      </nav>
+    <script>
+      // Your JavaScript goes here!
 
-      <div class="maintext-1">
-        <div class="container-1">
-          <h1>This website is awesome</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore aut
-            ipsum esse modi perferendis consectetur quaerat dolores doloribus.
-            Ea veritatis cupiditate architecto velit possimus eum sequi optio
-            consectetur ex. Adipisci.
-          </p>
-          <button type="button" class="signup a">Sign up</button>
-        </div>
-        <div class="image-org-container">
-          <img
-            class="image-org"
-            src="pexels-still-pixels-3699921.jpg"
-            alt="Embiid and Harden on the court"
-          />
-        </div>
-      </div>
+      function getComputerChoice() {
+        let int = Math.ceil(Math.random() * 3);
+        if (int == 1) return "rock";
+        if (int == 2) return "paper";
+        if (int == 3) return "scissor";
+      }
 
-      <div class="maintext-2">
-        <h2>Some random information</h2>
-        <div class="images">
-          <div class="img-1 p">
-            <img
-              src="pexels-darshak-pandya-574313.jpg"
-              alt="Temple next to water"
-              class="img"
-            />
-            <p>Subtext</p>
-          </div>
+      let playerScore = 0;
+      let computerScore = 0;
 
-          <div class="img-2 p">
-            <img
-              src="pexels-jeswin-thomas-1007426.jpg"
-              alt="Taj Mahal"
-              class="img"
-            />
-            <p>Subtext</p>
-          </div>
+      function playRound() {
+        let computerSelection = getComputerChoice();
 
-          <div class="img-3 p">
-            <img
-              src="pexels-prakasam-r-774282.jpg"
-              alt="Temple sky"
-              class="img"
-            />
-            <p>Subtext</p>
-          </div>
+        let pre = prompt("What's your choice?");
+        let playerSelection = pre.toLowerCase();
 
-          <div class="img-4 p">
-            <img
-              src="pexels-studio-art-smile-3476860.jpg"
-              alt="Indian flag"
-              class="img"
-            />
-            <p>Subtext</p>
-          </div>
-        </div>
-      </div>
+        if (playerSelection == "rock" && computerSelection == "scissor")
+          playerScore++;
+        if (playerSelection == "rock" && computerSelection == "paper")
+          computerScore++;
+        if (playerSelection == "rock" && computerSelection == "rock")
+          playRound();
 
-      <div class="maintext-3">
-        <p>
-          "In the vibrant tapestry of humanity, India's cultural symphony weaves
-          an enchanting melody that resonates across the globe, igniting hearts
-          with its diversity, resilience, and timeless wisdom."
-        </p>
-        <b class="quote-author">- ChatGPT</b>
-      </div>
+        if (playerSelection == "paper" && computerSelection == "rock")
+          playerScore++;
+        if (playerSelection == "paper" && computerSelection == "scissor")
+          computerScore++;
+        if (playerSelection == "paper" && computerSelection == "paper")
+          playRound();
 
-      <div class="maintext-4">
-        <h3>Call to Action! It's time!</h3>
-        <p>Sign up for our products by clicking the button!</p>
-        <div class="buttoncontainer">
-          <button type="button" class="signup">Sign up</button>
-        </div>
-      </div>
+        if (playerSelection == "scissor" && computerSelection == "paper")
+          playerScore++;
+        if (playerSelection == "scissor" && computerSelection == "rock")
+          computerScore++;
+        if (playerSelection == "scissor" && computerSelection == "scissor")
+          playRound();
+      }
 
-      <div class="footer">The Odin Project</div>
-    </div>
+      function winOrLose() {
+        if (playerScore == 5) return true;
+        if (computerScore == 5) return false;
+      }
+
+      function game() {
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+
+        if (winOrLose) return "You won!";
+        if (!winOrLose) return "You lost!";
+
+        playRound();
+
+        if (winOrLose) return "You won!";
+        if (!winOrLose) return "You lost!";
+
+        playRound();
+
+        if (winOrLose) return "You won!";
+        if (!winOrLose) return "You lost!";
+
+        playRound();
+
+        if (winOrLose) return "You won!";
+        if (!winOrLose) return "You lost!";
+
+        playRound();
+
+        if (winOrLose) return "You won!";
+        if (!winOrLose) return "You lost!";
+      }
+
+      console.log(game());
+    </script>
   </body>
 </html>
